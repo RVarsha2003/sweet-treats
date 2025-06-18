@@ -1,0 +1,673 @@
+// 🌈 Sass Variables
+$primary-color: #f28ab2;
+$secondary-color: #fff5f7;
+$text-color: #333;
+
+// 🌈 Base Styling
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: $secondary-color;
+  color: $text-color;
+  transition: background 0.3s ease, color 0.3s ease;
+
+  &.dark-theme {
+    background-color: #121212 !important;
+    color: #f5f5f5 !important;
+
+    .navbar {
+      background-color: #1e1e1e !important;
+
+      .nav-link {
+        color: #f5f5f5 !important;
+
+        &:hover {
+          color: $primary-color !important;
+        }
+      }
+
+      .navbar-brand {
+        color: $primary-color !important;
+      }
+    }
+  }
+}
+.btn-group.mb-4.filter-group {
+    background-color: #ffffff !important; /* Pink */
+    border-color: #d63384 !important;
+    color: white !important; /* Adjust text color for better visibility */
+
+  }
+
+
+// 🌈 Navbar Styling with Nesting
+.navbar {
+  background-color: $secondary-color;
+
+  .navbar-brand {
+    font-weight: bold;
+    color: $primary-color;
+    i {
+      margin-right: 8px;
+    }
+  }
+
+  .nav-link {
+    color: $text-color;
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  #toggle-theme {
+    font-size: 14px;
+  }
+}
+
+                                                    // JQUERY SCROLL HEADER STYLE
+header.scrolled {
+  .navbar {
+    background-color: darken($secondary-color, 10%);
+    transition: 0.3s;
+  }
+}
+
+                                                         //  CAROSEL START  
+
+// 🌟 Hero Section Styling
+#hero {
+  .carousel-item {
+    height: 90vh;
+    img {
+      object-fit: cover;
+      height: 100%;
+      filter: brightness(0.7);
+    }
+  }
+
+  .carousel-caption {
+    bottom: 15%;
+    text-align: center;
+
+    .hero-title {
+      font-size: 3rem;
+      font-weight: bold;
+      color: white;
+      animation: fadeIn 2s ease-in;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: white;
+      animation: fadeIn 3s ease-in;
+    }
+  }
+}
+
+// 🔄 Animation using keyframes
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 768px) {
+  #hero {
+    .carousel-caption {
+      .hero-title {
+        font-size: 1.8rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+                                                             //  CAROSEL END 
+
+
+
+                                                             // 🧁 Product Section
+#products {
+  background-color: lighten($secondary-color, 5%);
+  h2 {
+    color: $primary-color;
+    margin-bottom: 2rem;
+  }
+
+  .filter-group {
+    button {
+      font-weight: 500;
+      &.active {
+        background-color: $primary-color;
+        color: white;
+      }
+    }
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  .product-item {
+    transition: transform 0.3s;
+
+    .card {
+      border: none;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+      .card-img-top {
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .stars {
+        color: gold;
+        font-size: 1.1rem;
+      }
+
+      .card-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+      }
+
+      .card-text {
+        color: darken($primary-color, 20%);
+        font-size: 1rem;
+      }
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+}
+@media (max-width: 576px) {
+  #products {
+    .product-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .card-img-top {
+      height: 180px;
+    }
+
+    .stars {
+      font-size: 1rem;
+    }
+  }
+}
+
+                                                            // 🧁 Product Section END
+                                                            // ORDER FORM 
+// 📦 Mixin for centered containers
+@mixin centerBox($width) {
+  max-width: $width;
+  margin: 0 auto;
+}
+
+#order {
+  background-color: #fdf8f5;
+
+  h2 {
+    color: $primary-color;
+  }
+
+  .order-form {
+    @include centerBox(500px);
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+    label {
+      font-weight: 600;
+    }
+
+    input, select {
+      border: 1px solid lighten($primary-color, 30%);
+    }
+
+    button {
+      background-color: $primary-color;
+      border: none;
+      font-weight: bold;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+  }
+}
+@media (max-width: 576px) {
+  .order-form {
+    padding: 1rem;
+  }
+
+  label {
+    font-size: 0.9rem;
+  }
+}
+                                                                   // 💌 Newsletter Popup START
+#newsletterPopup {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 999;
+  display: none;
+
+  .popup-box {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: fadeIn 1s;
+
+    h3 {
+      color: $primary-color;
+      margin-bottom: 0.5rem;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+    }
+  }
+}
+                                                               // 💌 Newsletter Popup END
+
+                                                            //    FOOTER 
+footer.footer {
+  background-color: $secondary-color;
+  color: rgb(255, 0, 178);
+  font-weight: 500;
+  font-size: 1rem;
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+
+  p {
+    margin: 0;
+  }
+}
+                                                         //    FOOTER END
+
+                                                        //  SCROLL DOWN
+ #scrollTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 999;
+  background-color: $primary-color;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px 14px;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  display: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}
+                                                    //    SCROLL DOWN 
+ @media (max-width: 768px) {
+  nav .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  #themeToggle {
+    font-size: 0.9rem;
+    padding: 4px 6px;
+  }
+
+  footer p {
+    font-size: 0.9rem;
+  }
+}
+                                                                      
+
+
+                                                                          //  DARK THEME start
+
+
+body.dark-mode {
+  background-color: #121212;
+  color: #f5f5f5;
+
+  body.dark-mode .btn-group.mb-4.filter-group {
+  background-color: #ed0606 !important;
+  color: #ffffff !important; // black text ✔️ visible on white
+}
+.popup-content{
+  color: red;
+}
+
+.popup-content {
+    background: #fff;
+    width: 90%;
+    max-width: 400px;
+    margin: 10% auto;
+    padding: 20px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+
+    h3 {
+      margin-top: 0;
+      color: #d63384;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+.popup-content
+{
+  text-decoration: red;
+}
+    .popup-close {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #333;
+
+      &:hover {
+        color: #d63384;
+      }
+    }
+  }
+
+.card-title,
+.card-text {
+  color: #000000 !important; // Black colour for cake name , cake rate .
+}
+
+
+
+  // Navbar + Footer
+  nav.navbar,
+  footer.footer,
+  .sticky-top {
+    background-color: #1e1e1e !important;
+    color: #eaeaea !important;
+    border-color: #c2c2c2 !important;
+  }
+
+  // Text elements
+  h1, h2, h3, h4, h5, h6,
+  span, a, strong {
+    color: #ffffff !important; // ✅ Bright white text
+  }
+
+  p, label {
+    color: #ffffff !important; // ✅ Form labels and paragraphs
+  }
+
+  // Hero section or top banner
+  .hero,
+  header {
+    background-color: #1e1e1e !important;
+    color: #f5f5f5 !important;
+  }
+
+  // Cards, product grid, and individual items
+  .product-card,                      // ✅ Each cake card
+  .product-grid,                      // ✅ Grid container
+  .product-item {                     // ✅ Individual grid item
+    background-color: #1e1e1e !important;
+    color: #ff0000 !important;       // ✅ Cake name + price visible
+    border: 1px solid #333 !important;
+  }
+
+  .product-item .price {
+    color: #ffdd57 !important;       // ✅ Optional: Highlight price
+  }
+
+  // Order form box
+  .order-form,                        // ✅ "Place your order" section
+  .form-container {
+    background-color: #333 !important;
+    color: #ffffff !important;
+    border: 1px solid #f1a7a7 !important;
+    padding: 1rem;
+  }
+
+  .order-form label {
+    color: #ffffff !important;       // ✅ Input labels in white
+  }
+
+  .order-form input,
+  .order-form select,
+  .order-form textarea {
+    background-color: #292929 !important;
+    color: #ffffff !important;       // ✅ Input text white
+    border: 1px solid #888 !important; // ✅ Light border
+  }
+
+  .order-form input::placeholder,
+  .order-form textarea::placeholder {
+    color: #cccccc !important;       // ✅ Light grey placeholders
+  }
+
+  .btn-submit,
+  .btn-subscribe {
+    background-color: #ff4081 !important; // ✅ Bright highlight for submit
+    color: #ffffff !important;
+    border: none;
+  }
+
+  .btn-submit:hover,
+  .btn-subscribe:hover {
+    background-color: #ff1a66 !important;
+  }
+
+  // Cards, carousel, alerts
+  .carousel-item,
+  .popup-box,
+  .newsletter-popup,
+  .newsletter,
+  section,
+  .rating-stars,
+  .cake-description,
+  .alert,
+  .popup {
+    background-color: #1e1e1e !important;
+    color: #f5f5f5 !important;
+    border: 1px solid #221d1d !important;
+  }
+
+  .card {
+    border: 1px solid #f1a7a7 !important;
+  }
+
+  // Buttons - general
+  .btn,
+  .btn-primary,
+  .btn-success,
+  .btn-outline-light,
+  .btn-outline-dark {
+    background-color: #292929 !important;
+    color: #ffffff !important;
+    border-color: #444 !important;
+  }
+
+  .btn:hover,
+  .btn-primary:hover,
+  .btn-success:hover {
+    background-color: #444 !important;
+    color: #ffffff !important;
+  }
+
+  // Forms - global
+  input,
+  textarea,
+  select {
+    background-color: #292929 !important;
+    color: #ffffff !important;
+    border: 1px solid #555 !important;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #cccccc !important;
+  }
+
+  // Navigation links
+  .navbar-nav .nav-link {
+    color: #ffffff !important;
+  }
+
+  .navbar-nav .nav-link:hover {
+    color: #ffdd57 !important;
+  }
+
+  // Scroll to top button
+  #scrollTopBtn {
+    background-color: #333 !important;
+    color: #ffffff !important;
+  }
+
+  // Light/Dark Toggle Button
+  #themeToggle {
+    background-color: #444 !important;
+    color: #f5f5f5 !important;
+  }
+
+  // Carousel arrows
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    filter: invert(1); // ✅ Make icons visible
+  }
+
+  // Shadows and glow
+  .card,
+  .product-card,
+  .popup-box,
+  .order-form {
+    box-shadow: 0 0 10px rgba(253, 4, 203, 0.1);
+  }
+
+// body.dark-mode #contactPopup .popup-content {
+//   all: initial; // ✅ Reset all inherited styles
+//   color: #000 !important;              // Force black text
+//   background-color: #fff !important;   // Optional: white background
+//   font-family: Arial, sans-serif;      // Optional: set a base font
+//   padding: 20px;
+//   border-radius: 10px;
+//   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+//   width: 90%;
+//   max-width: 400px;
+//   margin: 10% auto;
+//   position: relative;
+//   display: block;
+// }
+
+
+}
+
+                                                                    // DARK THEME FOR CONTACT POP UP 
+
+                                                        /* CONTACT POPUP STYLE */
+#contactPopup {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  .popup-content {
+    background: #fff;
+    width: 90%;
+    max-width: 400px;
+    margin: 10% auto;
+    padding: 20px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+
+    h3 {
+      margin-top: 0;
+      color: #d63384;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+
+    .popup-close {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #333;
+
+      &:hover {
+        color: #d63384;
+      }
+    }
+  }
+}
+
+                                                                                 // LAST FIXES
+
+/* Modal appears over navbar */
+.modal {
+  z-index: 1060; /* Bootstrap default for modal */
+}
+
+.sticky-top {
+  z-index: 1030; /* lower than modal */
+}
+
+/* DARK MODE: Fix modal content visibility */
+body.dark-mode .modal-content {
+  background-color: #2b2020 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .modal-header,
+body.dark-mode .modal-body,
+body.dark-mode .modal-footer {
+  background-color: #2b2020 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .modal-content input,
+body.dark-mode .modal-content textarea {
+  background-color: #333 !important;
+  color: #fff !important;
+  border: 1px solid #777;
+}
+
+body.dark-mode .modal-content input::placeholder,
+body.dark-mode .modal-content textarea::placeholder {
+  color: #ccc !important;
+}
