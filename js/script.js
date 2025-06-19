@@ -58,7 +58,7 @@ $('#orderForm').on('submit', function (e) {
                                                            //  ORDER FORM VALIDATION END
 
                                                         //    Popup Timing and Close START
-
+                                                        //  NEWSLETTER POPUP
   // Show newsletter popup after 5 seconds
 setTimeout(function () {
   $('#newsletterPopup').fadeIn();
@@ -72,22 +72,26 @@ $('.popup-close').on('click', function () {
 // Subscribe button action
 $('#subscribeBtn').on('click', function () {
   let email = $('#newsletterEmail').val().trim();
+
   if (email === '') {
     alert('Please enter your email!');
+  } else if (!email.includes('@')) {
+    alert('Email must contain "@"!');
   } else {
     alert('🎉 Subscribed successfully!');
     $('#newsletterPopup').fadeOut();
   }
 });
+
                                                     //   SCROLL DOWN 
  // Show button when user scrolls down
-$(window).on('scroll', function () {
-  if ($(this).scrollTop() > 200) {
-    $('#scrollTopBtn').fadeIn();
-  } else {
-    $('#scrollTopBtn').fadeOut();
-  }
-});
+// $(window).on('scroll', function () {
+//   if ($(this).scrollTop() > 200) {
+//     $('#scrollTopBtn').fadeIn();
+//   } else {
+//     $('#scrollTopBtn').fadeOut();
+//   }
+// });
 
 // Scroll to top when clicked
 $('#scrollTopBtn').on('click', function () {
