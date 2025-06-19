@@ -94,9 +94,9 @@ $('#subscribeBtn').on('click', function () {
 // });
 
 // Scroll to top when clicked
-$('#scrollTopBtn').on('click', function () {
-  $('html, body').animate({ scrollTop: 0 }, 600);
-});
+// $('#scrollTopBtn').on('click', function () {
+//   $('html, body').animate({ scrollTop: 0 }, 600);
+// });
                                                                   //  DARK MODE   
   $('#themeToggle').on('click', function () {
   $('body').toggleClass('dark-mode');
